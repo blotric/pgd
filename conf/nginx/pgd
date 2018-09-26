@@ -5,9 +5,9 @@ server {
     server_name pgd.pollvortex.com;
 
     location / {
-        include         uwsgi_params;
-        uwsgi_ignore_client_abort on;
-        uwsgi_pass      unix:/home/ubuntu/pgd/pgd.sock;
-        client_max_body_size 64M;
+        root   /home/ubuntu/pgd;
+        index  index.html index.htm;
+        try_files $uri $uri/ /index.html;
+        expires 60s;
     }
 }
