@@ -13,7 +13,7 @@ server {
     server_name pgd.pollvortex.com;
 
     location /static {
-            alias /home/ubuntu/pgd/public/static;
+            alias /home/ubuntu/pgd/static;
             expires 365d;
             gzip on;
             gzip_disable "msie6";
@@ -36,7 +36,7 @@ server {
     }
 
     location /media {
-            alias /home/ubuntu/pgd/public/media;
+            alias /home/ubuntu/pgd/media;
     }
 
     location / {
