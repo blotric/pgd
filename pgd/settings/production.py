@@ -33,16 +33,6 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'PGD Železniki <info@pgd-zelezniki.si>'
 
-# # EMAIL_USE_TLS = True
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = '52.59.193.205'
-# # EMAIL_HOST_PASSWORD = 'bpdcuqqkibaexwvc'
-# EMAIL_HOST_USER = 'mail@cargox.io'
-# EMAIL_PORT = 1587
-
-# EMAIL_SUBJECT_PREFIX = '[CargoX API] '
-
-
 try:
     from .local import *
 except ImportError:
