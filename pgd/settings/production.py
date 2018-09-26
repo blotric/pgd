@@ -23,7 +23,7 @@ DATABASES = {
     }
 }
 
-
+ALLOWED_HOSTS = ['pgd.pollvortex.com']
 
 try:
     from .local import *
