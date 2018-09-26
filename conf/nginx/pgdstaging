@@ -1,0 +1,13 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name pgd.pollvortex.com;
+
+    location / {
+        include         uwsgi_params;
+        uwsgi_ignore_client_abort on;
+        uwsgi_pass      unix:/home/git/pgd/pgd.sock;
+        client_max_body_size 64M;
+    }
+}

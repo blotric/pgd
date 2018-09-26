@@ -1,0 +1,27 @@
+# DB
+db.sqlite3
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Translations
+*.mo
+
+/media
+
+*.db
+node-modules
+celerybeat-schedule
+
+.idea
+.DS_Store
+
+package-lock.json
+node_modules
+
+/keys
