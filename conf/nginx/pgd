@@ -1,13 +1,49 @@
 server {
     listen 80;
     listen [::]:80;
+    server_name pgd.pollvortex.com;
+    return 301 https://pgd.pollvortex.com$request_uri;
+}
 
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    ssl_certificate /etc/letsencrypt/live/pgd.pollvortex.com/fullchain.pem;
+    ssl_certificate_key  /etc/letsencrypt/live/pgd.pollvortex.com/privkey.pem;
     server_name pgd.pollvortex.com;
 
-    location / {
-        root   /home/ubuntu/pgd;
-        index  index.html index.htm;
-        try_files $uri $uri/ /index.html;
-        expires 60s;
+    location /static {
+            alias /home/ubuntu/pgd/public/static;
+            expires 365d;
+            gzip on;
+            gzip_disable "msie6";
+
+            gzip_comp_level 6;
+            gzip_min_length 1100;
+            gzip_buffers 16 8k;
+            gzip_proxied any;
+            gzip_types
+                    text/plain
+                    text/css
+                    text/js
+                    text/xml
+                    text/javascript
+                    application/javascript
+                    application/x-javascript
+                    application/json
+                    application/xml
+                    application/xml+rss;
     }
+
+    location /media {
+            alias /home/ubuntu/pgd/public/media;
+    }
+
+    location / {
+        uwsgi_read_timeout 600;
+        expires         off;
+        include         uwsgi_params;
+        uwsgi_pass      unix:/home/ubuntu/pgd/pgd.sock;
+    }
+
 }
