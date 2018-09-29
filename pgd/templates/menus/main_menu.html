@@ -1,0 +1,14 @@
+{% load menu_tags %}
+
+<div class="rd-navbar-nav-wrap">
+    <ul class="rd-navbar-nav">
+        {% for item in menu_items %}
+            <li class="{{ item.active_class }}">
+                <a href="{{ item.href }}">{{ item.text }}</a>
+                {% if item.has_children_in_menu %}
+                    {% sub_menu item template="menus/sub_menu.html" %}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
