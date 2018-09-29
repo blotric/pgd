@@ -1,10 +1,29 @@
 {% extends "pgd/base.html" %}
 
 {% load static wagtailuserbar %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
+    {% if page.gallery_images.count > 0 %}
+        <section>
+            <div class="swiper-container swiper-slider swiper-slider_fullheight" data-simulate-touch="false" data-loop="false" data-autoplay="5500">
+                <div class="swiper-wrapper">
+                    {% for item in page.gallery_images.all %}
+                        {% image item.image width-1920 as tmp_photo %}
+                        <div class="swiper-slide bg-gray-lighter" title="{{ item.caption }}" data-slide-bg="{{ tmp_photo.url }}"></div>
+                    {% endfor %}
+                </div>
+                <!-- Swiper Pagination-->
+                <div class="swiper-pagination"></div>
+                <!-- Swiper Navigation-->
+                <div class="swiper-button-prev linear-icon-chevron-left"></div>
+                <div class="swiper-button-next linear-icon-chevron-right"></div>
+            </div>
+        </section>
+    {% endif %}
+
     <!-- Presentation -->
     <section class="section-xl bg-default text-center" id="section-see-features">
         <div class="container">
