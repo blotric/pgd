@@ -1,5 +1,6 @@
 {% load static wagtailuserbar %}
 {% load menu_tags %}
+{% load wagtailcore_tags %}
 
 <!DOCTYPE html>
 <html class="wide wow-animation" lang="en">
@@ -55,6 +56,25 @@
             </nav>
         </div>
     </header>
+
+    {% if self.get_ancestors|length > 1 %}
+        <section class="breadcrumbs-custom">
+            <div class="container">
+                <div class="breadcrumbs-custom__inner">
+                    <p class="breadcrumbs-custom__title">{{ page.title }}</p>
+                    <ul class="breadcrumbs-custom__path">
+                        <li><a href="">Domov</a></li>
+                        {% for p in self.get_ancestors %}
+                            {% if p.is_root == False and forloop.counter > 2 %}
+                                <li><a href="{% pageurl p %}">{{ p.title }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        <li class="active">{{ self.title }}</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    {% endif %}
 
     {% block content %}{% endblock %}
     <!-- Page Footer -->
