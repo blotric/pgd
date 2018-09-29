@@ -137,6 +137,10 @@ class BlogPage(RoutablePageMixin, Page):
 
     show_in_menus_default = True
 
+    class Meta:
+        verbose_name = "Blog post category"
+        verbose_name_plural = "Blog post categories"
+
 
 class PostPage(Page):
     body = RichTextField()
@@ -178,6 +182,10 @@ class PostPage(Page):
         return context
 
     show_in_menus_default = True
+
+    class Meta:
+        verbose_name = "Blog post"
+        verbose_name_plural = "Blog posts"
 
 
 @register_snippet
