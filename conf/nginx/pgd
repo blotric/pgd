@@ -12,6 +12,8 @@ server {
     ssl_certificate_key  /etc/letsencrypt/live/pgd.pollvortex.com/privkey.pem;
     server_name pgd.pollvortex.com;
 
+    client_max_body_size 20M;
+
     location /static {
             alias /home/ubuntu/pgd/static;
             expires 365d;
