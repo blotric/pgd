@@ -63,14 +63,16 @@
                 </section>
 
                 <!-- About-->
-                <section class="section-md">
-                    <h5>About</h5>
-                    <div class="thumbnail-classic-minimal"><img class="rounded-circle" src="images/aside-blog-about-1-210x210.jpg" alt="" width="210" height="210"/>
-                        <div class="caption">
-                            <p>Mr.Williamson was born in one of Detroit’s poorest blocks, all before pursuing his successful managerial career in the future. For him, the breakthrough happened when he was able to get on Harvard University’s Law School list. After graduating from there, he was working for a few years for a number of multi-million dollar corporations, climbing up the corporate ladder and...</p><a class="button button-link" href="about.html">Read more</a>
+                {% if page.description %}
+                    <section class="section-md">
+                        <h5>Opis</h5>
+                        <div class="thumbnail-classic-minimal"><img class="rounded-circle" src="images/aside-blog-about-1-210x210.jpg" alt="" width="210" height="210"/>
+                            <div class="caption">
+                                {{ page.description|safe }}
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                {% endif %}
 
                 <!-- Categories-->
                 {% with categories=page.categories.all %}
