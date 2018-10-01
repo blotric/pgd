@@ -3,6 +3,7 @@ from datetime import date
 
 from django import forms
 from django.db import models
+from django.db.models import Q
 from django.utils.dateformat import DateFormat
 from django.utils.formats import date_format
 from django.http import Http404, HttpResponse
@@ -130,7 +131,9 @@ class BlogPage(RoutablePageMixin, Page):
         search_query = request.GET.get('q', None)
         self.posts = self.get_posts()
         if search_query:
-            self.posts = self.posts.filter(body__contains=search_query)
+            self.posts = self.posts.filter(Q(body__contains=search_query)
+                                           | Q(excerpt__contains=search_query)
+                                           | Q(title__contains=search_query))
             self.search_term = search_query
             self.search_type = 'search'
         return Page.serve(self, request, *args, **kwargs)

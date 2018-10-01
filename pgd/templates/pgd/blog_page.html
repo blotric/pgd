@@ -12,7 +12,7 @@
         <div class="row row-70">
             <div class="col-lg-7 col-xl-8 section-divided__main">
                 <!-- Post classic-->
-                {% for post in page.get_children %}
+                {% for post in page.posts %}
                     <div class="section-md">
                         <article class="post-classic">
                             <div class="post-classic-title post-classic-title-icon linear-icon-star">
@@ -53,10 +53,10 @@
                 <section class="section-md section-style-1">
                     <h5>Search</h5>
                     <!-- RD Search-->
-                    <form class="rd-search rd-mailform-inline-flex text-center" action="search-results.html" method="GET" data-search-live="rd-search-results-live">
+                    <form class="rd-search rd-mailform-inline-flex text-center" action="{{ page.url }}search" method="GET" data-search-live="rd-search-results-live">
                         <div class="form-wrap form-wrap_icon linear-icon-magnifier">
                             <label class="form-label" for="rd-search-form-input">Enter  keyword</label>
-                            <input class="form-input" id="rd-search-form-input" type="text" name="s" autocomplete="off">
+                            <input class="form-input" id="rd-search-form-input" type="text" name="q" autocomplete="off">
                         </div>
                         <button class="button button-primary" type="submit">Go!</button>
                     </form>
