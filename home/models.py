@@ -10,6 +10,7 @@ from modelcluster.fields import ParentalKey, ParentalManyToManyField
 class HomePage(Page):
     content_panels = Page.content_panels + [
         InlinePanel('gallery_images', label="Gallery images"),
+        InlinePanel('related_blog_posts', label="News"),
     ]
 
 
@@ -23,4 +24,12 @@ class HomePageGalleryImage(Orderable):
     panels = [
         ImageChooserPanel('image'),
         FieldPanel('caption'),
+    ]
+
+
+class RelatedBlogPage(Orderable):
+    post = ParentalKey('HomePage', on_delete=models.CASCADE, related_name='related_blog_posts')
+    news_article = models.ForeignKey('pgd.PostPage', on_delete=models.CASCADE, related_name="+")
+    panels = [
+        FieldPanel('news_article')
     ]

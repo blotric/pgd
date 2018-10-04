@@ -16,7 +16,7 @@
                     <div class="post-meta">
                         <div class="group">
                             <a href="{% pageurl page %}">
-                            <time datetime="{{ post.first_published_at|date:"Y" }}">{{ post.first_published_at|date:"M j, Y \o\b H:i" }}</time></a> by {{ page.owner.get_full_name }}</a>
+                            <time datetime="{{ post.first_published_at|date:"Y" }}">{{ post.first_published_at|date:"M j, Y \o\b H:i" }}</time></a>, avtor {{ page.owner.get_full_name }}</a>
                             {% if page.tags.all.count %}
                                 <ul class="list-inline-tag">
                                 {% for tag in page.tags.all %}
