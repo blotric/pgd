@@ -356,6 +356,9 @@ code,
 [data-custom-toggle] {
   cursor: pointer; }
 
+.rd-navbar-brand {
+  min-width: 500px; }
+
 /*
 *
 * Components
