@@ -47,6 +47,7 @@ class ContentPage(Page):
     content_panels = Page.content_panels + [
         FieldPanel('publication_date'),
         FieldPanel('body', classname="full"),
+        InlinePanel('content_page_gallery_images', label="Gallery"),
     ]
 
     promote_panels = [
@@ -215,7 +216,10 @@ class BlogPageTag(TaggedItemBase):
 
 
 class GalleryImage(Orderable):
-    blog_post = ParentalKey(PostPage, on_delete=models.CASCADE, related_name='post_gallery_images')
+    blog_post = ParentalKey(PostPage, on_delete=models.CASCADE, related_name='post_gallery_images',
+                            null=True, blank=True)
+    content_page = ParentalKey(ContentPage, on_delete=models.CASCADE, related_name='content_page_gallery_images',
+                               null=True, blank=True)
     image = models.ForeignKey(
         'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
     )
