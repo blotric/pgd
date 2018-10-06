@@ -35,31 +35,31 @@
 
                     {{ page.body|safe }}
 
-                    <hr class="mb-5 mt-5" />
-
                     {% if page.post_gallery_images.count > 0 %}
-                    <h4 class="mb-3">Galerija</h4>
-                    <div class="slick-gallery">
-                        <!-- Slick Carousel-->
-                        <div class="slick-slider carousel-parent" data-arrows="true" data-loop="false" data-dots="false" data-swipe="true" data-items="1" data-child="#child-carousel" data-for="#child-carousel" data-lightgallery="group">
-                            {% for item in page.post_gallery_images.all %}
-                                <div class="item">
-                                    {% image item.image fill-1920x1080 as full_size_gallery_image %}
-                                    <a class="img-thumbnail-variant-1" href="{{ full_size_gallery_image.url }}" title="{{ item.caption }}" data-lightgallery="item">
-                                        <figure>{% image item.image fill-886x668 title=item.caption %}</figure>
-                                        <div class="caption"><span class="icon icon-lg linear-icon-magnifier"></span></div>
-                                    </a>
-                                </div>
-                            {% endfor %}
+                        <hr class="mb-5 mt-5" />
+
+                        <h4 class="mb-3">Galerija</h4>
+                        <div class="slick-gallery">
+                            <!-- Slick Carousel-->
+                            <div class="slick-slider carousel-parent" data-arrows="true" data-loop="false" data-dots="false" data-swipe="true" data-items="1" data-child="#child-carousel" data-for="#child-carousel" data-lightgallery="group">
+                                {% for item in page.post_gallery_images.all %}
+                                    <div class="item">
+                                        {% image item.image fill-1920x1080 as full_size_gallery_image %}
+                                        <a class="img-thumbnail-variant-1" href="{{ full_size_gallery_image.url }}" title="{{ item.caption }}" data-lightgallery="item">
+                                            <figure>{% image item.image fill-886x668 title=item.caption %}</figure>
+                                            <div class="caption"><span class="icon icon-lg linear-icon-magnifier"></span></div>
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="slick-slider" id="child-carousel" data-for=".carousel-parent" data-arrows="true" data-loop="false" data-dots="false" data-swipe="true" data-items="3" data-sm-items="4" data-md-items="5" data-lg-items="6" data-xl-items="8" data-slide-to-scroll="3" data-sm-slide-to-scroll="4" data-md-slide-to-scroll="5" data-lg-slide-to-scroll="6">
+                                {% for item in page.post_gallery_images.all %}
+                                    <div class="item">
+                                        {% image item.image fill-168x112 title=item.caption %}
+                                    </div>
+                                {% endfor %}
+                            </div>
                         </div>
-                        <div class="slick-slider" id="child-carousel" data-for=".carousel-parent" data-arrows="true" data-loop="false" data-dots="false" data-swipe="true" data-items="3" data-sm-items="4" data-md-items="5" data-lg-items="6" data-xl-items="8" data-slide-to-scroll="3" data-sm-slide-to-scroll="4" data-md-slide-to-scroll="5" data-lg-slide-to-scroll="6">
-                            {% for item in page.post_gallery_images.all %}
-                                <div class="item">
-                                    {% image item.image fill-168x112 title=item.caption %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    </div>
                     {% endif %}
                 </section>
             </div>
