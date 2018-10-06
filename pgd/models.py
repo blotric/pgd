@@ -10,7 +10,7 @@ from django.http import Http404, HttpResponse
 
 from wagtail.admin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, RichTextFieldPanel
 from wagtail.core.fields import RichTextField
-from wagtail.core.models import Page
+from wagtail.core.models import Page, Orderable
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.search import index
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
@@ -168,6 +168,7 @@ class PostPage(Page):
         RichTextFieldPanel("excerpt"),
         FieldPanel('categories', widget=forms.CheckboxSelectMultiple),
         FieldPanel('tags'),
+        InlinePanel('post_gallery_images', label="Gallery"),
     ]
 
     settings_panels = Page.settings_panels + [
@@ -211,6 +212,19 @@ class BlogCategory(models.Model):
 
 class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey('PostPage', related_name='post_tags')
+
+
+class GalleryImage(Orderable):
+    blog_post = ParentalKey(PostPage, on_delete=models.CASCADE, related_name='post_gallery_images')
+    image = models.ForeignKey(
+        'wagtailimages.Image', on_delete=models.CASCADE, related_name='+'
+    )
+    caption = models.CharField(blank=True, max_length=250)
+
+    panels = [
+        ImageChooserPanel('image'),
+        FieldPanel('caption'),
+    ]
 
 
 @register_snippet

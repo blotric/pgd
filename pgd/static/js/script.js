@@ -2200,7 +2200,6 @@
 				var $slickItem = $(plugins.slick[i]);
 
 				$slickItem.slick({
-					slidesToScroll: parseInt($slickItem.attr('data-slide-to-scroll')) || 1,
 					asNavFor: $slickItem.attr('data-for') || false,
 					dots: $slickItem.attr("data-dots") == "true",
 					infinite: isNoviBuilder ? false : $slickItem.attr("data-loop") == "true",
@@ -2217,30 +2216,35 @@
 							breakpoint: 0,
 							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-items')) || 1,
+								slidesToScroll: parseInt($slickItem.attr('data-slide-to-scroll')) || 1,
 							}
 						},
 						{
 							breakpoint: 479,
 							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-xs-items')) || 1,
+								slidesToScroll: parseInt($slickItem.attr('data-xs-slide-to-scroll')) || 1,
 							}
 						},
 						{
 							breakpoint: 767,
 							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-sm-items')) || 1,
+								slidesToScroll: parseInt($slickItem.attr('data-sm-slide-to-scroll')) || 1,
 							}
 						},
 						{
 							breakpoint: 991,
 							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-md-items')) || 1,
+								slidesToScroll: parseInt($slickItem.attr('data-md-slide-to-scroll')) || 1,
 							}
 						},
 						{
 							breakpoint: 1199,
 							settings: {
 								slidesToShow: parseInt($slickItem.attr('data-lg-items')) || 1,
+								slidesToScroll: parseInt($slickItem.attr('data-lg-slide-to-scroll')) || 1,
 								swipe: false
 							}
 						}
