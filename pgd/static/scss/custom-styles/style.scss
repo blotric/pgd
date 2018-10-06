@@ -395,6 +395,10 @@ code,
 
 .rd-navbar-brand {
   min-width: 500px;
+
+  > a {
+    display: inline;
+  }
 }
 
 @import "includes";

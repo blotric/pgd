@@ -358,6 +358,8 @@ code,
 
 .rd-navbar-brand {
   min-width: 500px; }
+  .rd-navbar-brand > a {
+    display: inline; }
 
 /*
 *
