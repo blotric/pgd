@@ -356,10 +356,19 @@ code,
 [data-custom-toggle] {
   cursor: pointer; }
 
-.rd-navbar-brand {
-  min-width: 500px; }
-  .rd-navbar-brand > a {
-    display: inline; }
+@media (min-width: 768px) {
+  .rd-navbar-brand {
+    min-width: 400px;
+    justify-content: left !important; }
+    .rd-navbar-brand > a {
+      display: inline; } }
+
+@media (max-width: 991px) {
+  .rd-navbar-brand {
+    min-width: 80%;
+    justify-content: left !important; }
+    .rd-navbar-brand > a {
+      display: inline; } }
 
 /*
 *

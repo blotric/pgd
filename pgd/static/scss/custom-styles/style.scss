@@ -393,12 +393,26 @@ code,
 // Components & modules & plugins & helpers & fonts
 //
 
-.rd-navbar-brand {
-  min-width: 500px;
+@include media-breakpoint-up(md) {
+  .rd-navbar-brand {
+    min-width: 400px;
+    justify-content: left !important;
 
-  > a {
-    display: inline;
+    > a {
+      display: inline;
+    }
   }
 }
+@include media-breakpoint-down(md) {
+  .rd-navbar-brand {
+    min-width: 80%;
+    justify-content: left !important;
+
+    > a {
+      display: inline;
+    }
+  }
+}
+
 
 @import "includes";
