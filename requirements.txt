@@ -2,3 +2,4 @@ Django==2.0.8
 wagtail>=2.2,<2.3
 wagtailmenus==2.11
 psycopg2==2.7.5
+django-compressor==2.2
