@@ -68,7 +68,7 @@
                 <div class="breadcrumbs-custom__inner">
                     <p class="breadcrumbs-custom__title">{{ page.title }}</p>
                     <ul class="breadcrumbs-custom__path">
-                        <li><a href="">Domov</a></li>
+                        <li><a href="/">Domov</a></li>
                         {% for p in self.get_ancestors %}
                             {% if p.is_root == False and forloop.counter > 2 %}
                                 <li><a href="{% pageurl p %}">{{ p.title }}</a></li>
