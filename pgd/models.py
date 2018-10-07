@@ -183,6 +183,7 @@ class PostPage(Page):
     def get_context(self, request, *args, **kwargs):
         context = super(PostPage, self).get_context(request, *args, **kwargs)
         context['blog_page'] = self.blog_page
+        context['blog_latest_posts'] = PostPage.objects.descendant_of(self.get_parent().specific).live().order_by('-date')
         context['post'] = self
         return context
 

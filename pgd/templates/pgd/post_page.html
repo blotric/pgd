@@ -68,7 +68,7 @@
                 {% with categories=page.categories.all %}
                     {% if categories %}
                         <section class="section-md">
-                            <h5>Categories</h5>
+                            <h5>Kategorije</h5>
                             <ul class="list-linked">
                                 {% for category in categories %}
                                     <li><a href="{{ page.blog_page.url }}category/{{ category.slug }}">{{ category.name }}</a></li>
@@ -79,37 +79,27 @@
                 {% endwith %}
 
                 <!-- Posts-->
-                <section class="section-md">
-                    <h5>Latest Posts</h5>
-                    <ul class="list-sm">
-                        <li>
-                            <!-- Post inline-->
-                            <article class="post-inline">
-                                <div class="post-inline__header"><span class="post-inline__time">Jan.20, 2016</span><a class="post-inline__author meta-author" href="standard-post.html">by Brian Williamson</a></div>
-                                <p class="post-inline__link"><a href="standard-post.html">How to Use Bootstrap Framework</a></p>
-                            </article>
-                        </li>
-                        <li>
-                            <!-- Post inline-->
-                            <article class="post-inline">
-                                <div class="post-inline__header"><span class="post-inline__time">Jan.20, 2016</span><a class="post-inline__author meta-author" href="standard-post.html">by Brian Williamson</a></div>
-                                <p class="post-inline__link"><a href="standard-post.html">Getting to another level of design and functionality.</a></p>
-                            </article>
-                        </li>
-                        <li>
-                            <!-- Post inline-->
-                            <article class="post-inline">
-                                <div class="post-inline__header"><span class="post-inline__time">Jan.20, 2016</span><a class="post-inline__author meta-author" href="standard-post.html">by Brian Williamson</a></div>
-                                <p class="post-inline__link"><a href="standard-post.html">Creating Portfolio.</a></p>
-                            </article>
-                        </li>
-                    </ul>
-                </section>
+                {% if blog_latest_posts.count > 0 %}
+                    <section class="section-md">
+                        <h5>Zadnji članki</h5>
+                        <ul class="list-sm">
+                            {% for p in blog_latest_posts %}
+                            <li>
+                                <!-- Post inline-->
+                                <article class="post-inline">
+                                    <div class="post-inline__header"><span class="post-inline__time">{{ p.first_published_at|date:"M j, Y \o\b H:i" }}</span> - avtor {{ p.owner.get_full_name }}</div>
+                                    <p class="post-inline__link"><a href="{% pageurl p %}">{{ p.title }}</a></p>
+                                </article>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </section>
+                {% endif %}
 
                 <!-- Tags-->
                 {% if page.tags.all.count %}
                     <section class="section-md">
-                        <h5>Tags</h5>
+                        <h5>Oznake</h5>
                         <ul class="list-tags">
                             {% for tag in page.tags.all %}
                                 <li><a href="{{ page.blog_page.url }}tag/{{ tag }}">{{ tag }}</a></li>
