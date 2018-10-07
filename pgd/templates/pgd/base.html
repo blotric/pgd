@@ -185,8 +185,8 @@
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
-    {% compress js file base %}
     <script src="{% static 'js/core.min.js' %}"></script>
+    {% compress js file base %}
     <script src="{% static 'js/script.js' %}"></script>
     {% endcompress %}
 
