@@ -32,7 +32,7 @@
                                 <a href="{% pageurl post %}">{% image post.specific.header_image fill-886x668 %}</a>
                             {% endif %}
                             <div class="post-classic-body">
-                                {{ post.specific.excerpt|safe }}
+                                {{ post.specific.excerpt|richtext }}
                             </div>
                             <div class="post-meta">
                                 <div class="group"><a href="{% pageurl post %}">

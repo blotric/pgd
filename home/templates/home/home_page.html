@@ -35,9 +35,7 @@
                     <!-- Post classic-->
                     <article class="post-minimal">
                         {% image item.news_article.header_image fill-418x315 %}
-{#                        <a class="img-thumbnail-variant-1" href="{{ news_image.url }}" data-lightgallery="item">#}
 
-{#                        <img src="{% static 'images/post-minimal-1-418x315.jpg' %}" alt="" width="418" height="315"/>#}
                         <div class="post-classic-title">
                             <h5><a href="{% pageurl item.news_article %}">{{ item.news_article.title }}</a></h5>
                         </div>
@@ -47,7 +45,7 @@
                                 <time datetime="{{ item.news_article.first_published_at|date:"Y" }}">{{ item.news_article.first_published_at|date:"M j, Y \o\b H:i" }}</time></a>, avtor {{ item.news_article.owner.get_full_name }}</a>
                         </div>
                         <div class="post-classic-body">
-                            {{ item.news_article.excerpt|safe }}
+                            {{ item.news_article.excerpt|richtext }}
                         </div>
                         <div class="post-minimal-footer"><a class="button button-link" href="{% pageurl item.news_article %}">preberi več</a></div>
                     </article>

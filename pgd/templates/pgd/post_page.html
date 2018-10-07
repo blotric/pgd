@@ -27,13 +27,13 @@
                         </div>
                     </div>
 
-                    {{ page.excerpt|safe }}
+                    {{ page.excerpt|richtext }}
 
                     {% if page.header_image %}
                         {% image page.header_image fill-886x668 %}
                     {% endif %}
 
-                    {{ page.body|safe }}
+                    {{ page.body|richtext }}
 
                     {% if page.post_gallery_images.count > 0 %}
                         <hr class="mb-5 mt-5" />

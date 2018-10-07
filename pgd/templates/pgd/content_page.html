@@ -9,7 +9,7 @@
     <!-- Base typography-->
     <section class="section-lg">
         <div class="container">
-            {{ page.body|safe }}
+            {{ page.body|richtext }}
 
             {% if page.content_page_gallery_images.count > 0 %}
                 <hr class="mb-5 mt-5" />
