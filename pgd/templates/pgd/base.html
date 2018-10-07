@@ -1,5 +1,6 @@
 {% load static wagtailuserbar %}
 {% load menu_tags %}
+{% load compress %}
 {% load wagtailcore_tags %}
 
 <!DOCTYPE html>
@@ -22,6 +23,7 @@
     <meta charset="utf-8">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <!-- Stylesheets-->
+    {% compress css %}
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Libre+Franklin:200,300,500,600,300italic">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -29,6 +31,7 @@
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="{% static 'images/ie8-panel/warning_bar_0000_us.jpg' %}" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
     <script src="js/html5shiv.min.js"></script>
 		<![endif]-->
+    {% endcompress %}
     {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
     {% endblock %}
@@ -182,8 +185,10 @@
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
+    {% compress js %}
     <script src="{% static 'js/core.min.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
+    {% endcompress %}
 
     {% block extra_js %}
         {# Override this in templates to add extra javascript #}
