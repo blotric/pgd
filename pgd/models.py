@@ -58,7 +58,7 @@ class ContentPage(Page):
     # Parent page / subpage type rules
 
     parent_page_types = ['home.HomePage', 'pgd.ContentPage']
-    subpage_types = ['pgd.ContentPage']
+    subpage_types = ['pgd.ContentPage', 'pgd.BlogPage']
 
     show_in_menus_default = True
 
@@ -73,6 +73,9 @@ class BlogPage(RoutablePageMixin, Page):
     content_panels = Page.content_panels + [
         FieldPanel('description', classname="full")
     ]
+
+    parent_page_types = ['home.HomePage', 'pgd.ContentPage']
+    subpage_types = ['pgd.PostPage']
 
     def get_context(self, request, *args, **kwargs):
         context = super(BlogPage, self).get_context(request, *args, **kwargs)
@@ -175,6 +178,9 @@ class PostPage(Page):
     settings_panels = Page.settings_panels + [
         FieldPanel('date'),
     ]
+
+    parent_page_types = ['pgd.BlogPage']
+    subpage_types = []
 
     @property
     def blog_page(self):
