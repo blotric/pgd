@@ -11,6 +11,16 @@
     <div class="container">
         <div class="row row-70">
             <div class="col-lg-7 col-xl-8 section-divided__main">
+                {% if search_term %}
+                    <div class="section-md">
+                        <h3>Rezultati iskanja</h3>
+                        {% if posts.count > 0 %}
+                            <p>Iskanje {% if search_type == 'search' %}z nizom{% elif search_type == 'tag' %}po oznaki z imenom{% elif search_type == 'category' %}po kategoriji z imenom{% endif %} <strong>&ldquo;{{ search_term }}&rdquo;</strong> je vrnilo naslednje rezultate:</p>
+                        {% else %}
+                            <p>Iskanje {% if search_type == 'search' %}z nizom{% elif search_type == 'tag' %}po oznaki z imenom{% elif search_type == 'category' %}po kategoriji z imenom{% endif %} <strong>&ldquo;{{ search_term }}&rdquo;</strong> ni vrnilo nobenega rezultata.</p>
+                        {% endif %}
+                    </div>
+                {% endif %}
                 <!-- Post classic-->
                 {% for post in page.posts %}
                     <div class="section-md">
