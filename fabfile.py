@@ -16,18 +16,6 @@ env.forward_agent = True
 env.user = 'ubuntu'
 env.key_filename = os.path.join(base_path, 'keys/pgd_rsa')
 
-
-@task
-def staging():
-    env.host_string = POLLVORTEX_HOST
-    env.branch = 'dev'
-    env.build_command = 'build_staging'
-    env.django_settings = 'cargoxapi.settings.dev'
-    env.nginx_config = 'pgdstaging'
-    env.uwsgi_config = 'pgdstaging.ini'
-    env.supervisor_config = 'pgdstaging.conf'
-    env.rabbitmq_vhost = 'pgdstaging'
-
 @task
 def production():
     env.host_string = PRODUCTION_HOST
@@ -178,6 +166,7 @@ def management_command(command):
 
 @task
 def deploy():
+    production()
     with cd('/home/ubuntu/pgd/'):
         puts(magenta("[Pulling changes]"))
         run('git fetch')
