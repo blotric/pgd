@@ -142,8 +142,8 @@ class BlogPage(RoutablePageMixin, Page):
     show_in_menus_default = True
 
     class Meta:
-        verbose_name = "Blog post category"
-        verbose_name_plural = "Blog post categories"
+        verbose_name = "Article category"
+        verbose_name_plural = "Article categories"
 
 
 class PostPage(Page):
@@ -190,8 +190,8 @@ class PostPage(Page):
     show_in_menus_default = True
 
     class Meta:
-        verbose_name = "Blog post"
-        verbose_name_plural = "Blog posts"
+        verbose_name = "article"
+        verbose_name_plural = "articles"
 
 
 @register_snippet
