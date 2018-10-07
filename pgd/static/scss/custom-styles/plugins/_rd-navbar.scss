@@ -17,8 +17,8 @@ $rd-navbar-min-line-height: 48px;
 $rd-navbar-min-height: 56px;
 $rd-navbar-top-panel-height: 50px;
 
-$rd-navbar-color: $gray-darker;
-$rd-navbar-background: $white;
+$rd-navbar-color: $white;
+$rd-navbar-background: $red;
 $rd-navbar-dark-stuck-bg: $black;
 $rd-navbar-shadow: 0 2px 12px rgba(136, 136, 136, .1);
 $rd-navbar-width: map-get($container-max-widths, xxl) - 30px;
@@ -30,10 +30,10 @@ $rd-navbar-panel-background: $rd-navbar-background;
 
 //RD Navbar nav
 $rd-navbar-nav-min-width: 270px;
-$rd-navbar-nav-color: $black;
+$rd-navbar-nav-color: $white;
 $rd-navbar-nav-background: transparent;
-$rd-navbar-nav-hover-color: $primary;
-$rd-navbar-nav-hover-background: transparent;
+$rd-navbar-nav-hover-color: $black;
+$rd-navbar-nav-hover-background: $white;
 $rd-navbar-nav-active-color: $rd-navbar-nav-hover-color;
 $rd-navbar-nav-active-background: $rd-navbar-nav-hover-background;
 $rd-navbar-submenu-border: $gray-light;
@@ -43,7 +43,7 @@ $rd-navbar-dropdown-width: 240px;
 $rd-navbar-dropdown-background: $gray-3;
 $rd-navbar-dropdown-item-color: $black;
 $rd-navbar-dropdown-item-background: transparent;
-$rd-navbar-dropdown-item-hover-color: $primary;
+$rd-navbar-dropdown-item-hover-color: $black;
 $rd-navbar-dropdown-item-hover-background: transparent;
 $rd-navbar-dropdown-item-active-color: $rd-navbar-dropdown-item-hover-color;
 $rd-navbar-dropdown-item-active-background: $rd-navbar-dropdown-item-hover-background;
@@ -194,6 +194,7 @@ $navbar-fullwidth-nav-indent: 30px;
 
 .rd-navbar-fullwidth,
 .rd-navbar-static {
+
   .rd-navbar-nav {
 
     // RD Navbar Submenu
@@ -784,8 +785,9 @@ $navbar-fullwidth-nav-indent: 30px;
 
     > li {
       &.opened > a,
-      &.active > a {
-        color: $primary;
+      &.active > a,
+      & > a:hover{
+        color: $rd-navbar-nav-hover-color !important;
       }
     }
   }
@@ -827,7 +829,8 @@ $navbar-fullwidth-nav-indent: 30px;
     &.focus > .rd-navbar-submenu-toggle,
     &.opened > .rd-navbar-submenu-toggle,
     & > a:hover + .rd-navbar-submenu-toggle {
-      &::after { color: $rd-navbar-nav-hover-color; }
+      &::after { color: $rd-navbar-nav-hover-color;
+}
     }
   }
 }
