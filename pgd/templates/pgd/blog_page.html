@@ -18,7 +18,7 @@
                             <div class="post-classic-title post-classic-title-icon linear-icon-star">
                                 <h4><a href="{% pageurl post %}">{{ post.title }}</a></h4>
                             </div>
-                            {% image post.specific.header_image fill-886x668 %}
+                            <a href="{% pageurl post %}">{% image post.specific.header_image fill-886x668 %}</a>
                             <div class="post-classic-body">
                                 {{ post.specific.excerpt|safe }}
                             </div>
