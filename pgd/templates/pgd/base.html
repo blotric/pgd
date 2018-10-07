@@ -185,10 +185,10 @@
     <!-- Global Mailform Output-->
     <div class="snackbars" id="form-output-global"></div>
     <!-- Javascript-->
-    {% compress js %}
+{#    {% compress js %}#}
     <script src="{% static 'js/core.min.js' %}"></script>
     <script src="{% static 'js/script.js' %}"></script>
-    {% endcompress %}
+{#    {% endcompress %}#}
 
     {% block extra_js %}
         {# Override this in templates to add extra javascript #}
